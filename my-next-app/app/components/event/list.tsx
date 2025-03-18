@@ -4,64 +4,70 @@ import Link from "next/link";
 type Event = {
   id: string;
   name: string;
-  desc: string;
+  description: string;
   start: string;
   end: string;
   timezone: string;
   selected: boolean;
   creator: string;
+  members: string[];
 };
 
 export const events: Event[] = [
   {
     id: "event1",
     name: "EVENT-1",
-    desc: "Description of Event-1",
+    description: "Description of Event-1",
     start: "2025-04-10T10:00:00",
     end: "2025-04-10T18:00:00",
     timezone: "Asia/Seoul",
     selected: false,
     creator: "Alice",
+    members: ["Alice", "Bob"],
   },
   {
     id: "event2",
     name: "EVENT-2",
-    desc: "Description of Event-2",
+    description: "Description of Event-2",
     start: "2025-04-11T09:00:00",
     end: "2025-04-11T17:00:00",
     timezone: "America/New_York",
     selected: false,
     creator: "Bob",
+    members: ["Alice", "Bob"],
   },
   {
     id: "event3",
     name: "EVENT-3",
-    desc: "Description of Event-3",
+    description: "Description of Event-3",
     start: "2025-04-12T08:00:00",
     end: "2025-04-12T16:00:00",
     timezone: "Europe/London",
     selected: false,
     creator: "Charlie",
+    members: ["Alice", "Bob", "Charlie"],
   },
   {
     id: "event4",
     name: "EVENT-4",
-    desc: "Description of Event-4",
+    description: "Description of Event-4",
     start: "2025-04-13T11:00:00",
     end: "2025-04-13T19:00:00",
     timezone: "Australia/Sydney",
     selected: false,
     creator: "David",
+    members: ["Alice", "Bob", "Charlie"],
   },
   {
     id: "event5",
     name: "EVENT-5",
-    desc: "Description of Event-5",
+    description: "Description of Event-5",
     start: "2025-04-14T13:00:00",
     end: "2025-04-14T20:00:00",
     timezone: "Europe/Berlin",
     selected: false,
     creator: "Eve",
+    members: ["Alice", "Bob", "Charlie"],
   },
 ];
 
@@ -92,9 +98,12 @@ const EventList: FC = () => {
             <h3 className="text-lg font-semibold text-blue-600">
               {event.name}
             </h3>
-            <p className="text-gray-600">{event.desc}</p>
+            <p className="text-gray-600">{event.description}</p>
             <p className="text-gray-500 text-sm">
               <strong>Creator:</strong> {event.creator}
+            </p>
+            <p className="text-gray-500">
+              <strong>Members:</strong> {event.members.join("")}
             </p>
             <p className="text-gray-500 text-sm">
               <strong>Start:</strong> {formatDate(event.start, event.timezone)}
